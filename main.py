@@ -10,7 +10,12 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-@app.get('/analyze')
+
+@app.get('/')
+async def root():
+    return {"message": "Welcome to the CSV Analyzer API"}
+
+@app.post('/analyze')
 async def analyze_csv(file:UploadFile=File(...)):
     contents=await file.read()
     contents=contents.decode('utf-8')
