@@ -20,5 +20,5 @@ async def root():
 async def analyze_csv(file:UploadFile=File(...)):
     contents=await file.read()
     contents=contents.decode('utf-8')
-    return run_pipeline(pd.read_csv(pd.compat.StringIO(contents)))
+    return run_pipeline(contents)
 
