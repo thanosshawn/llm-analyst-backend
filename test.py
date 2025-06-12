@@ -6,5 +6,5 @@ with open("mock.csv", "rb") as f:
         files={"file": f}  # must be multipart/form-data
     )
 
-print(response.status_code)
-print(response.json())
+    print(response.status_code)
+    print(response.json())

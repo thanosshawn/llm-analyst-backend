@@ -15,4 +15,4 @@ def run_pipeline(df):
     print("Generated Report:", report)  
     return report
 
-pd.read_csv('mock.csv').pipe(run_pipeline)
+

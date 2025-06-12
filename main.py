@@ -1,7 +1,8 @@
 from fastapi import FastAPI,File,UploadFile
 app=FastAPI()
 from fastapi.middleware.cors import CORSMiddleware
-
+from langgraph_pipeline import run_pipeline
+import pandas as pd
 
 app.add_middleware(
     CORSMiddleware,
@@ -19,5 +20,5 @@ async def root():
 async def analyze_csv(file:UploadFile=File(...)):
     contents=await file.read()
     contents=contents.decode('utf-8')
-    return contents
+    return run_pipeline(pd.read_csv(pd.compat.StringIO(contents)))
 
